@@ -3,8 +3,9 @@
   "displayName": "Orange5 HPL Script",
   "description": "Entorno de edicion y linter semantico para archivos HPL (Orange5)",
   "version": "0.1.0",
-  "publisher": "autoradio",
+  "publisher": "RichardBarolin",
   "license": "MIT",
+  "icon": "assets/icon.png",
   "repository": {
     "type": "git",
     "url": "https://github.com/rbb-soft/Extension-Orange5-HPL-Script.git"
@@ -95,7 +96,10 @@
     "compile-tests": "tsc -p tsconfig.json",
     "test": "pnpm run build && pnpm run compile-tests && node --test \"out/server/test/*.test.js\"",
     "fixtures": "node tools/generate-fixtures.mjs",
-    "package": "pnpm run build && vsce package --no-dependencies --out dist/orange5-hpl-script-0.1.0.vsix"
+    "docs": "node tools/generate-docs.mjs",
+    "icon": "node tools/generate-icon.mjs",
+    "package": "pnpm run build && node tools/package.mjs",
+    "publish": "pnpm run build && vsce publish --no-dependencies"
   },
   "devDependencies": {
     "@types/node": "26.6.5",

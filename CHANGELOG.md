@@ -23,9 +23,15 @@ Primera publicación de la extensión.
   implementación de referencia.
 - Oráculo Python (`tools/oracle/reference_verdicts.py`) que emite los veredictos
   de la implementación de referencia sobre un corpus de fuentes.
+- Icono de 128×128 (`assets/icon.png`), generado de forma determinista por
+  `tools/generate-icon.mjs` sin dependencias externas.
+- Scripts `pnpm run docs`, `pnpm run icon`, `pnpm run package` y `pnpm run publish`.
 
 ### Changed
 
+- Identificador del publicador: `RichardBarolin.orange5-hpl-script`. El Marketplace
+  exige que el campo `publisher` del manifiesto coincida con el publicador real
+  al que pertenece el token de publicación.
 - Cadena de herramientas actualizada a pnpm 12.15.0, TypeScript 7.0.2,
   esbuild 0.28.2 y `@vscode/vsce` 4.0.0.
 - `client/` y `server/` se declaran como proyectos del workspace de pnpm, de
@@ -46,6 +52,9 @@ Primera publicación de la extensión.
 - Se declara el repositorio de publicación en el manifiesto, requisito de
   `vsce` 4 para resolver los enlaces del README.
 - El paquete `.vsix` ya no incluye `pnpm-lock.yaml` ni `pnpm-workspace.yaml`.
+- El `.vsix` ya no se empaqueta dentro de sí mismo: `dist/**` excluía el
+  contenido de un directorio con ese nombre, pero no un archivo, que era lo que
+  producía `--out dist/`.
 
 ### Removed
 

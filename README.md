@@ -15,13 +15,30 @@ posiciones exactas, los errores que la implementación de referencia rechazaría
 
 ## Instalación
 
-El artefacto es un único archivo `.vsix`:
+### Desde la tienda de extensiones
+
+1. Abrir la paleta de extensiones (`Ctrl+Shift+X`).
+2. Buscar **Orange5 HPL Script**.
+3. Pulsar *Install*.
+
+O desde la línea de órdenes:
 
 ```powershell
-code --install-extension "C:\Users\Autoradio\Documents\Python\Extension-Orange5-HPL-Script\dist\orange5-hpl-script-0.1.0.vsix"
+code --install-extension RichardBarolin.orange5-hpl-script
 ```
 
-También puede instalarse con doble clic sobre el archivo, o desde la paleta de
+### Desde el archivo `.vsix`
+
+Si prefiere instalarla sin pasar por la tienda, compile el paquete e instale el
+`.vsix` generado:
+
+```powershell
+pnpm install
+pnpm run package
+code --install-extension (Get-ChildItem dist\*.vsix).FullName
+```
+
+El archivo también puede instalarse con doble clic, o desde la paleta de
 comandos de VS Code mediante `Extensions: Install from VSIX…`.
 
 Requisitos: VS Code 1.140 o superior. No se requiere Node.js ni Python.
@@ -72,6 +89,8 @@ Extension-Orange5-HPL-Script/        # carpeta del repositorio
 ├─ tsconfig.base.json      opciones compartidas por raíz, client/ y server/
 ├─ LICENSE                 licencia MIT del proyecto
 ├─ CHANGELOG.md            registro de versiones
+├─ assets/                 recursos gráficos de la extensión
+│  └─ icon.png             icono de 128x128 para la ficha del Marketplace
 ├─ client/                 la extensión de VS Code
 │  ├─ language-configuration.json
 │  ├─ syntaxes/hpl.tmLanguage.json
@@ -87,7 +106,9 @@ Extension-Orange5-HPL-Script/        # carpeta del repositorio
 ├─ tools/
 │  ├─ oracle/              oráculo Python contra la implementación de referencia
 │  ├─ generate-fixtures.mjs
-│  └─ generate-docs.mjs
+│  ├─ generate-docs.mjs
+│  ├─ generate-icon.mjs
+│  └─ package.mjs
 └─ docs/
    ├─ GRAMATICA_HPL.md
    └─ CATALOGO_REGLAS.md
@@ -124,7 +145,10 @@ pnpm run build        # empaqueta cliente y servidor con esbuild
 pnpm run typecheck    # TypeScript en modo estricto
 pnpm test             # compila y ejecuta la suite completa
 pnpm run fixtures     # regenera fixtures/ y su manifiesto
+pnpm run docs         # regenera docs/CATALOGO_REGLAS.md desde el código
+pnpm run icon         # regenera assets/icon.png
 pnpm run package      # genera el .vsix en dist/
+pnpm run publish      # publica el .vsix en la tienda de extensiones
 ```
 
 La suite completa incluye el **test diferencial**, que compara el veredicto
@@ -156,6 +180,52 @@ impedirá generar el HPX. Los falsos positivos —señalar algo que la
 implementación de referencia acepta— se admiten únicamente en reglas de
 severidad `warning` o `hint`.
 
+## Publicación en la tienda de extensiones
+
+El publicador es `RichardBarolin`, por lo que la extensión queda publicada
+como `RichardBarolin.orange5-hpl-script`. El Marketplace exige que el campo
+`publisher` del manifiesto coincida exactamente con el publicador al que
+pertenece el token con el que se publica.
+
+### Token de acceso personal
+
+En Azure DevOps, *User settings* → *Personal Access Tokens* → *New token*:
+
+- Organizaciones: *All accessible organizations*
+- Ámbito: `Marketplace` → `Manage*
+
+### Publicar
+
+```powershell
+$env:VSCE_PAT = "<token>"
+pnpm run publish
+```
+
+El script recompila la extensión y sube el `.vsix`. Equivale a
+`vsce publish --no-dependencies`: la flag es necesaria porque todo el código
+se empaqueta con esbuild y `node_modules` no debe viajar en la extensión.
+
+Para publicar sin pasar por la variable de entorno:
+
+```powershell
+npx vsce login RichardBarolin
+pnpm run publish
+```
+
+`vsce login` abre el navegador y guarda el token en el almacén de credenciales
+del sistema. Es interactivo, por lo que en integración continua se prefiere
+`VSCE_PAT` como secreto.
+
+### Verificar
+
+La ficha aparece en
+<https://marketplace.visualstudio.com/items?itemName=RichardBarolin.orange5-hpl-script>
+una vez indexada, que puede tardar entre unos minutos y algunas horas. A
+partir de ahí la instalación es la de la sección *Instalación*.
+
+Para publicar una versión de prueba, `vsce publish --pre-release` deja la
+extensión en la sección de pre-lanzamiento, separada de las versiones estables.
+
 ## Estado verificado
 
 | Comprobación | Resultado |
@@ -167,8 +237,9 @@ severidad `warning` o `hint`.
 | Reglas con fixture propio | 83 (99 %) |
 | Pruebas automatizadas | 111, todas en verde |
 | Análisis de 1.000 líneas | inferior a 50 ms |
-| Paquete `.vsix` | 10 ficheros, 226 KB, sin código TypeScript ni Python |
-| Extensión instalada | `autoradio.orange5-hpl-script@0.1.0` |
+| Paquete `.vsix` | 11 ficheros, 231 KB, sin código TypeScript ni Python |
+| Icono de la ficha | `assets/icon.png`, 128×128 |
+| Extensión publicada | `RichardBarolin.orange5-hpl-script@0.1.0` |
 | Cadena de herramientas | pnpm 12.15.0, TypeScript 7.0.2, esbuild 0.28.2, `@vscode/vsce` 4.0.0 |
 | Dependencias deprecadas en el árbol | 0 |
 
