@@ -1,0 +1,7 @@
+packages:
+  - client
+  - server
+
+allowBuilds:
+  '@vscode/vsce-sign': true
+  esbuild: true

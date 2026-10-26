@@ -1,0 +1,11 @@
+{
+  "name": "orange5-hpl-script-server",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Servidor LSP del linter HPL",
+  "main": "./out/server.js",
+  "dependencies": {
+    "vscode-languageserver": "11.0.0",
+    "vscode-languageserver-textdocument": "1.0.16"
+  }
+}

@@ -1,0 +1,7 @@
+PINO=SCK,0
+PINI=SO,1
+["Main"]
+; comentario de linea
+// comentario completo
+LOOP=(7,0){SCK=P}
+PRINT=("fin")

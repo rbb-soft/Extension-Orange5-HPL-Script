@@ -1,0 +1,758 @@
+{
+  "valid": [
+    "valid/minimo.hpl",
+    "valid/registro_y_array.hpl",
+    "valid/macro_local.hpl",
+    "valid/bucle_y_comentarios.hpl"
+  ],
+  "invalid": [
+    {
+      "file": "invalid/hpl.record.tooLong/linea_larga.hpl",
+      "expected": [
+        {
+          "code": "hpl.record.tooLong",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.record.afterEof/tras_ctrl_z.hpl",
+      "expected": [
+        {
+          "code": "hpl.record.afterEof",
+          "severity": "warning"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.string.unclosed/cadena_sin_cerrar.hpl",
+      "expected": [
+        {
+          "code": "hpl.string.unclosed",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.paren.unbalanced/parentesis.hpl",
+      "expected": [
+        {
+          "code": "hpl.paren.unbalanced",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.literal.unsupported/literal.hpl",
+      "expected": [
+        {
+          "code": "hpl.literal.unsupported",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.block.unclosed/sin_cerrar.hpl",
+      "expected": [
+        {
+          "code": "hpl.block.unclosed",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.block.unexpectedClose/cierre_solto.hpl",
+      "expected": [
+        {
+          "code": "hpl.block.unexpectedClose",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.block.withoutCondition/llave_sola.hpl",
+      "expected": [
+        {
+          "code": "hpl.block.withoutCondition",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.block.braceNotOnConditionLine/llave_siguiente_linea.hpl",
+      "expected": [
+        {
+          "code": "hpl.block.braceNotOnConditionLine",
+          "severity": "error",
+          "line": 3
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.block.missingSeparator/separador_faltante.hpl",
+      "expected": [
+        {
+          "code": "hpl.block.missingSeparator",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.block.emptyBody/cuerpo_vacio.hpl",
+      "expected": [
+        {
+          "code": "hpl.block.emptyBody",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.statement.empty/sentencia_vacia.hpl",
+      "expected": [
+        {
+          "code": "hpl.statement.empty",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.statement.unsupported/sentencia_sin_igual.hpl",
+      "expected": [
+        {
+          "code": "hpl.statement.unsupported",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.nesting.tooDeep/anidamiento.hpl",
+      "expected": [
+        {
+          "code": "hpl.nesting.tooDeep",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.section.duplicate/duplicada.hpl",
+      "expected": [
+        {
+          "code": "hpl.section.duplicate",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.section.systemAlreadyDefined/sistema_repetida.hpl",
+      "expected": [
+        {
+          "code": "hpl.section.systemAlreadyDefined",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.section.tooMany/demasiadas.hpl",
+      "expected": [
+        {
+          "code": "hpl.section.tooMany",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.section.nameTooLong/nombre_largo.hpl",
+      "expected": [
+        {
+          "code": "hpl.section.nameTooLong",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.section.emptyLocalName/macro_sin_nombre.hpl",
+      "expected": [
+        {
+          "code": "hpl.section.emptyLocalName",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.section.delimiter/delimitador.hpl",
+      "expected": [
+        {
+          "code": "hpl.section.delimiter",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.macro.duplicate/macro_duplicada.hpl",
+      "expected": [
+        {
+          "code": "hpl.macro.duplicate",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.macro.tooMany/demasiadas.hpl",
+      "expected": [
+        {
+          "code": "hpl.macro.tooMany",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.macro.undefined/no_definida.hpl",
+      "expected": [
+        {
+          "code": "hpl.macro.undefined",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.macro.argCount/sin_argumentos.hpl",
+      "expected": [
+        {
+          "code": "hpl.macro.argCount",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.macro.argUnsupported/argumento_invalido.hpl",
+      "expected": [
+        {
+          "code": "hpl.macro.argUnsupported",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.header.unsupported/desconocida.hpl",
+      "expected": [
+        {
+          "code": "hpl.header.unsupported",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.header.afterSection/despues_de_seccion.hpl",
+      "expected": [
+        {
+          "code": "hpl.header.afterSection",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.header.unclosedString/cadena.hpl",
+      "expected": [
+        {
+          "code": "hpl.header.unclosedString",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.header.hplNameTooLong/dependencia_larga.hpl",
+      "expected": [
+        {
+          "code": "hpl.header.hplNameTooLong",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.header.infoTooLong/info_larga.hpl",
+      "expected": [
+        {
+          "code": "hpl.header.infoTooLong",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.header.optionFlag/flag.hpl",
+      "expected": [
+        {
+          "code": "hpl.header.optionFlag",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.header.tooManyOptionAreas/areas.hpl",
+      "expected": [
+        {
+          "code": "hpl.header.tooManyOptionAreas",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.header.cdelayNotDigit/cdelay.hpl",
+      "expected": [
+        {
+          "code": "hpl.header.cdelayNotDigit",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.pin.aliasInvalid/alias.hpl",
+      "expected": [
+        {
+          "code": "hpl.pin.aliasInvalid",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.pin.aliasTooLong/alias.hpl",
+      "expected": [
+        {
+          "code": "hpl.pin.aliasTooLong",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.pin.numberNotDigit/numero.hpl",
+      "expected": [
+        {
+          "code": "hpl.pin.numberNotDigit",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.pin.reservedName/reservado.hpl",
+      "expected": [
+        {
+          "code": "hpl.pin.reservedName",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.pin.tooMany/demasiados.hpl",
+      "expected": [
+        {
+          "code": "hpl.pin.tooMany",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.pin.undefined/no_declarado.hpl",
+      "expected": [
+        {
+          "code": "hpl.pin.undefined",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.bus.aliasInvalid/alias.hpl",
+      "expected": [
+        {
+          "code": "hpl.bus.aliasInvalid",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.bus.aliasTooLong/alias.hpl",
+      "expected": [
+        {
+          "code": "hpl.bus.aliasTooLong",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.bus.numberNotDigit/numero.hpl",
+      "expected": [
+        {
+          "code": "hpl.bus.numberNotDigit",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.bus.tooMany/demasiados.hpl",
+      "expected": [
+        {
+          "code": "hpl.bus.tooMany",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.bus.undefined/no_declarado.hpl",
+      "expected": [
+        {
+          "code": "hpl.bus.undefined",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.pin.valueRange/valor.hpl",
+      "expected": [
+        {
+          "code": "hpl.pin.valueRange",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.pin.compareValue/comparacion.hpl",
+      "expected": [
+        {
+          "code": "hpl.pin.compareValue",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.reg.duplicateName/nombre.hpl",
+      "expected": [
+        {
+          "code": "hpl.reg.duplicateName",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.reg.formatUnknown/formato.hpl",
+      "expected": [
+        {
+          "code": "hpl.reg.formatUnknown",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.reg.nameTruncated/nombre_largo.hpl",
+      "expected": [
+        {
+          "code": "hpl.reg.nameTruncated",
+          "severity": "warning"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.reg.indexOutOfRange/fuera_de_rango.hpl",
+      "expected": [
+        {
+          "code": "hpl.reg.indexOutOfRange",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.reg.bitRange/bit.hpl",
+      "expected": [
+        {
+          "code": "hpl.reg.bitRange",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.array.duplicate/duplicada.hpl",
+      "expected": [
+        {
+          "code": "hpl.array.duplicate",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.array.tooMany/demasiadas.hpl",
+      "expected": [
+        {
+          "code": "hpl.array.tooMany",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.array.sizeInvalid/tamano.hpl",
+      "expected": [
+        {
+          "code": "hpl.array.sizeInvalid",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.array.valueOutOfRange/byte.hpl",
+      "expected": [
+        {
+          "code": "hpl.array.valueOutOfRange",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.array.empty/vacia.hpl",
+      "expected": [
+        {
+          "code": "hpl.array.empty",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.array.unknown/no_declarada.hpl",
+      "expected": [
+        {
+          "code": "hpl.array.unknown",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.array.indexRange/indice.hpl",
+      "expected": [
+        {
+          "code": "hpl.array.indexRange",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.array.countOperand/contador.hpl",
+      "expected": [
+        {
+          "code": "hpl.array.countOperand",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.array.writeRequiresRegister/escritura.hpl",
+      "expected": [
+        {
+          "code": "hpl.array.writeRequiresRegister",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.array.receiveOperand/receptor.hpl",
+      "expected": [
+        {
+          "code": "hpl.array.receiveOperand",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.cond.unsupported/no_soportada.hpl",
+      "expected": [
+        {
+          "code": "hpl.cond.unsupported",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.cond.reservedCommand/comando_reservado.hpl",
+      "expected": [
+        {
+          "code": "hpl.cond.reservedCommand",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.cond.bitValue/bit.hpl",
+      "expected": [
+        {
+          "code": "hpl.cond.bitValue",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.iter.outsideControl/fuera_de_control.hpl",
+      "expected": [
+        {
+          "code": "hpl.iter.outsideControl",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.iter.indexTooLarge/indice_grande.hpl",
+      "expected": [
+        {
+          "code": "hpl.iter.indexTooLarge",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.loop.form/forma.hpl",
+      "expected": [
+        {
+          "code": "hpl.loop.form",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.loop.valueTooBig/valor.hpl",
+      "expected": [
+        {
+          "code": "hpl.loop.valueTooBig",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.loop.indexTypeUndefined/tipo_indice.hpl",
+      "expected": [
+        {
+          "code": "hpl.loop.indexTypeUndefined",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.break.outsideLoop/fuera_de_bucle.hpl",
+      "expected": [
+        {
+          "code": "hpl.break.outsideLoop",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.break.tooMany/demasiados.hpl",
+      "expected": [
+        {
+          "code": "hpl.break.tooMany",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.operand.reservedLhs/reservado.hpl",
+      "expected": [
+        {
+          "code": "hpl.operand.reservedLhs",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.operand.unknownAssignment/desconocida.hpl",
+      "expected": [
+        {
+          "code": "hpl.operand.unknownAssignment",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.arith.divByZero/division.hpl",
+      "expected": [
+        {
+          "code": "hpl.arith.divByZero",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.codeSlotsExceeded/slots.hpl",
+      "expected": [
+        {
+          "code": "hpl.codeSlotsExceeded",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.delay.zero/retardo.hpl",
+      "expected": [
+        {
+          "code": "hpl.delay.zero",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.print.payloadRequired/payload.hpl",
+      "expected": [
+        {
+          "code": "hpl.print.payloadRequired",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.get.formatPrefix/prefijo.hpl",
+      "expected": [
+        {
+          "code": "hpl.get.formatPrefix",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.adv.payloadEmpty/payload_vacio.hpl",
+      "expected": [
+        {
+          "code": "hpl.adv.payloadEmpty",
+          "severity": "hint"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.adv.logIgnored/log.hpl",
+      "expected": [
+        {
+          "code": "hpl.adv.logIgnored",
+          "severity": "hint"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.adv.invertedPin/invertido.hpl",
+      "expected": [
+        {
+          "code": "hpl.adv.invertedPin",
+          "severity": "hint"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.adv.encodingMismatch/codificacion.hpl",
+      "expected": [
+        {
+          "code": "hpl.adv.encodingMismatch",
+          "severity": "hint"
+        }
+      ]
+    },
+    {
+      "file": "invalid/hpl.adv.codeSlotsNearLimit/slots.hpl",
+      "expected": [
+        {
+          "code": "hpl.adv.codeSlotsNearLimit",
+          "severity": "hint"
+        }
+      ]
+    }
+  ]
+}

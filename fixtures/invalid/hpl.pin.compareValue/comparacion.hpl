@@ -1,0 +1,3 @@
+PINI=SO,1
+["Main"]
+SO?2{SCK=1}

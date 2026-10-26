@@ -1,0 +1,109 @@
+{
+  "name": "orange5-hpl-script",
+  "displayName": "Orange5 HPL Script",
+  "description": "Entorno de edicion y linter semantico para archivos HPL (Orange5)",
+  "version": "0.1.0",
+  "publisher": "autoradio",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rbb-soft/Extension-Orange5-HPL-Script.git"
+  },
+  "homepage": "https://github.com/rbb-soft/Extension-Orange5-HPL-Script#readme",
+  "bugs": {
+    "url": "https://github.com/rbb-soft/Extension-Orange5-HPL-Script/issues"
+  },
+  "packageManager": "pnpm@12.15.0",
+  "engines": {
+    "vscode": "^1.140.0",
+    "node": ">=22"
+  },
+  "categories": [
+    "Programming Languages",
+    "Linters"
+  ],
+  "keywords": [
+    "hpl",
+    "orange5",
+    "radio",
+    "linter"
+  ],
+  "main": "./client/out/extension.js",
+  "activationEvents": [
+    "onLanguage:hpl"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "hpl",
+        "aliases": [
+          "HPL",
+          "hpl"
+        ],
+        "extensions": [
+          ".hpl"
+        ],
+        "configuration": "./client/language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "hpl",
+        "scopeName": "source.hpl",
+        "path": "./client/syntaxes/hpl.tmLanguage.json"
+      }
+    ],
+    "configuration": {
+      "title": "HPL",
+      "properties": {
+        "hpl.diagnostics.enable": {
+          "type": "boolean",
+          "default": true,
+          "description": "Publica los diagnosticos del linter HPL en el panel Problemas."
+        },
+        "hpl.diagnostics.severityOverrides": {
+          "type": "object",
+          "default": {},
+          "additionalProperties": {
+            "type": "string",
+            "enum": [
+              "error",
+              "warning",
+              "hint",
+              "ignore"
+            ]
+          },
+          "markdownDescription": "Severidad por codigo de regla. Claves: codigos `hpl.*`. Valores: `error`, `warning`, `hint` o `ignore`."
+        },
+        "hpl.trace.server": {
+          "type": "string",
+          "enum": [
+            "off",
+            "messages",
+            "verbose"
+          ],
+          "default": "off",
+          "description": "Traza la comunicacion con el servidor LSP de HPL."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "node build.mjs",
+    "watch": "node build.mjs --watch",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "compile-tests": "tsc -p tsconfig.json",
+    "test": "pnpm run build && pnpm run compile-tests && node --test \"out/server/test/*.test.js\"",
+    "fixtures": "node tools/generate-fixtures.mjs",
+    "package": "pnpm run build && vsce package --no-dependencies --out dist/orange5-hpl-script-0.1.0.vsix"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.5",
+    "@types/vscode": "1.140.0",
+    "@vscode/vsce": "4.0.0",
+    "esbuild": "0.28.2",
+    "typescript": "7.0.2",
+    "vscode-oniguruma": "2.0.1",
+    "vscode-textmate": "9.3.2"
+  }
+}

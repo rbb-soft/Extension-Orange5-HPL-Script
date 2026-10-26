@@ -1,0 +1,120 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "HPL",
+  "scopeName": "source.hpl",
+  "fileTypes": ["hpl"],
+  "patterns": [
+    { "include": "#section" },
+    { "include": "#string" },
+    { "include": "#comment-double-slash" },
+    { "include": "#comment-semicolon" },
+    { "include": "#header-key" },
+    { "include": "#number-hex" },
+    { "include": "#number-hex-prefix" },
+    { "include": "#number-binary" },
+    { "include": "#number-decimal" },
+    { "include": "#register" },
+    { "include": "#builtin" },
+    { "include": "#constant-class" },
+    { "include": "#command" },
+    { "include": "#array" },
+    { "include": "#macro" },
+    { "include": "#operator" },
+    { "include": "#punctuation" }
+  ],
+  "repository": {
+    "section": {
+      "begin": "^(\\s*)(\\[)",
+      "beginCaptures": {
+        "1": { "name": "punctuation.section.begin.hpl" },
+        "2": { "name": "punctuation.section.bracket.begin.hpl" }
+      },
+      "end": "(\\])",
+      "endCaptures": {
+        "1": { "name": "punctuation.section.bracket.end.hpl" }
+      },
+      "contentName": "entity.name.section.hpl",
+      "patterns": [
+        { "include": "#section-flag" },
+        { "include": "#section-local" },
+        { "include": "#macro-name" }
+      ]
+    },
+    "section-flag": {
+      "match": "[!#~]+",
+      "name": "keyword.other.flags.hpl"
+    },
+    "section-local": {
+      "match": "_",
+      "name": "storage.modifier.local.hpl"
+    },
+    "string": {
+      "match": "\"(?:[^\"]|\"\")*\"",
+      "name": "string.quoted.double.hpl"
+    },
+    "comment-double-slash": {
+      "match": "^\\s*//.*$",
+      "name": "comment.line.double-slash.hpl"
+    },
+    "comment-semicolon": {
+      "match": ";.*$",
+      "name": "comment.line.semicolon.hpl"
+    },
+    "header-key": {
+      "match": "\\b(HPL|POWER|SOCKET|ALLPINS|CDELAY|OPTIONS|INFOFILE|INFO|TESTMASK|PINO|PINI|PING|PINT|BUSO|BUSI|LOG)\\b(?=\\s*=)",
+      "name": "entity.name.tag.hpl"
+    },
+    "number-hex": {
+      "match": "\\b[0-9A-Fa-f]+[hH]\\b",
+      "name": "constant.numeric.hex.hpl"
+    },
+    "number-hex-prefix": {
+      "match": "\\b0[xX][0-9A-Fa-f]+\\b",
+      "name": "constant.numeric.hex.hpl"
+    },
+    "number-binary": {
+      "match": "\\b[01]+[bB]\\b",
+      "name": "constant.numeric.binary.hpl"
+    },
+    "number-decimal": {
+      "match": "\\b[0-9]+\\b",
+      "name": "constant.numeric.decimal.hpl"
+    },
+    "register": {
+      "match": "\\bR[0-9A-Fa-f]{1,2}\\b",
+      "name": "variable.other.register.hpl"
+    },
+    "builtin": {
+      "match": "\\$[A-Za-z_][A-Za-z0-9_]*",
+      "name": "support.constant.builtin.hpl"
+    },
+    "constant-class": {
+      "match": "\\b(DATA|ADR|CONST|MARK|LOG|VCC|VPP|I)\\b",
+      "name": "support.constant.hpl"
+    },
+    "command": {
+      "match": "\\b(PRINT|GET|EXIT|BREAK|RETURN|IENABLE|IDISABLE|LOOP|REGINFO)\\b",
+      "name": "keyword.control.hpl"
+    },
+    "array": {
+      "match": "@[A-Za-z_][A-Za-z0-9_]*",
+      "name": "variable.other.array.hpl"
+    },
+    "macro": {
+      "match": "_#?[A-Za-z_][A-Za-z0-9_]*",
+      "name": "entity.name.function.hpl"
+    },
+    "macro-name": {
+      "match": "_#?[A-Za-z_][A-Za-z0-9_]*",
+      "name": "entity.name.function.hpl"
+    },
+    "operator": {
+      "match": "(<<|>>|[=+*/%^&|?<>!-])",
+      "name": "keyword.operator.hpl"
+    },
+    "punctuation": {
+      "match": "[,(){}]",
+      "name": "punctuation.separator.hpl"
+    }
+  }
+}

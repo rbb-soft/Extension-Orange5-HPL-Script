@@ -1,0 +1,5 @@
+PINO=SCK,0
+PINI=SO,1
+["Main"]
+SCK=0
+SO?1{SCK=1}

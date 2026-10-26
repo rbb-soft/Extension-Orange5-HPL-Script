@@ -1,0 +1,13 @@
+{
+  "name": "orange5-hpl-script-client",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Cliente LSP de la extension Orange5 HPL Script",
+  "main": "./out/extension.js",
+  "dependencies": {
+    "vscode-languageclient": "11.0.0"
+  },
+  "devDependencies": {
+    "@types/vscode": "1.140.0"
+  }
+}

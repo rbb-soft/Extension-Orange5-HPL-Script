@@ -1,0 +1,5 @@
+PINO=SCK,0
+[_MAC]
+R0=1
+["Main"]
+_MAC(SCK)

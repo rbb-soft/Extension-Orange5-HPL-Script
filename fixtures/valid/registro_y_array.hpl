@@ -1,0 +1,6 @@
+PINO=SCK,0
+R9=STATUS,C8,SRWD
+@buf={1,2,3}
+["Main"]
+R9=0
+SCK=0

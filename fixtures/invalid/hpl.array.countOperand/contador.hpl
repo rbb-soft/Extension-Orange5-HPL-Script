@@ -1,0 +1,4 @@
+BUSO=PB,0
+@buf=4
+["Main"]
+PB=@buf(INEXISTENTE)

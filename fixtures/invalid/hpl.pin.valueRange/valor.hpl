@@ -1,0 +1,3 @@
+PINO=SCK,0
+["Main"]
+SCK=2

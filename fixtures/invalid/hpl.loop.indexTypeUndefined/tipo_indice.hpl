@@ -1,0 +1,3 @@
+PINO=O,1
+["Main"]
+LOOP(3){O=I}
